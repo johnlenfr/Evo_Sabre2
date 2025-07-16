@@ -436,14 +436,14 @@ ap_oled.prototype.playback_mode = function(){
           let border_right = this.width -5;
           let Y_seekbar = 35;
           let Ymax_seekbar = 38;
-          this.driver.drawLine(3, Y_seekbar, border_right , Y_seekbar, 3);
-          this.driver.drawLine(border_right, Y_seekbar,border_right , Ymax_seekbar, 3);
-          this.driver.drawLine(3, Ymax_seekbar,border_right, Ymax_seekbar, 3);
-          this.driver.drawLine(3, Ymax_seekbar, 3, Y_seekbar, 3);
+          this.driver.drawLine(3, Y_seekbar, border_right , Y_seekbar, 9);
+          this.driver.drawLine(border_right, Y_seekbar,border_right , Ymax_seekbar, 9);
+          this.driver.drawLine(3, Ymax_seekbar,border_right, Ymax_seekbar, 9);
+          this.driver.drawLine(3, Ymax_seekbar, 3, Y_seekbar, 9);
           this.driver.cursor_y = 43;
           this.driver.cursor_x = 83;
-          this.driver.writeString(fonts.monospace , 1 , this.data.seek_string ,5); 
-          this.driver.fillRect(3, Y_seekbar, border_right * this.data.ratiobar / 100, 4, 6);
+          this.driver.writeString(fonts.monospace , 1 , this.data.seek_string ,6); 
+          this.driver.fillRect(3, Y_seekbar, border_right * this.data.ratiobar / 100, 4, 3);
         }
       }
 		
