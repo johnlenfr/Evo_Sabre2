@@ -300,31 +300,38 @@ if (this.page === "clock") return;
 		this.driver.drawLine(1, 41, 255, 41, 5, false);
 		
 		
-		this.driver.setCursor(35,47);
+		//this.driver.setCursor(35,47);
+		this.driver.setCursor(0,47);
 		this.driver.writeString(fonts.monospace ,1, (this.ip?this.ip:"No network...") ,4);
 		
 		
 		if(this.data && this.data.volume !== null ){
 			let volstring = this.data.volume.toString();
 			if(this.data.mute === true || volstring === "0") volstring = "X";
-			this.driver.setCursor(195,47);
-			this.driver.writeString(fonts.icons , 1 , "0" ,4); 
+			//this.driver.setCursor(195,47);
+			//this.driver.writeString(fonts.icons , 1 , "0" ,4); 
 			this.driver.setCursor(205,47);
 			this.driver.writeString(fonts.monospace ,1, volstring ,10);
-			this.driver.setCursor(190,47);
-			this.driver.writeString(fonts.monospace ,1, volstring ,9);
 			this.driver.setCursor(185,47);
-			this.driver.writeString(fonts.monospace ,1, volstring ,8);
-			this.driver.setCursor(180,47);
-			this.driver.writeString(fonts.monospace ,1, volstring ,7);
+			this.driver.writeString(fonts.monospace ,1, volstring ,9);
 			this.driver.setCursor(175,47);
-			this.driver.writeString(fonts.monospace ,1, volstring ,6);
-			this.driver.setCursor(170,47);
-			this.driver.writeString(fonts.monospace ,1, volstring ,5);
+			this.driver.writeString(fonts.monospace ,1, volstring ,8);
 			this.driver.setCursor(165,47);
+			this.driver.writeString(fonts.monospace ,1, volstring ,7);
+			this.driver.setCursor(155,47);
+			this.driver.writeString(fonts.monospace ,1, volstring ,6);
+			this.driver.setCursor(145,47);
+			this.driver.writeString(fonts.monospace ,1, volstring ,5);
+			this.driver.setCursor(135,47);
 			this.driver.writeString(fonts.monospace ,1, volstring ,4);
-			this.driver.setCursor(160,47);
+			this.driver.setCursor(125,47);
 			this.driver.writeString(fonts.monospace ,1, volstring ,3);
+			this.driver.setCursor(115,47);
+			this.driver.writeString(fonts.monospace ,1, volstring ,2);
+			this.driver.setCursor(105,47);
+			this.driver.writeString(fonts.monospace ,1, volstring ,1);
+			this.driver.setCursor(95,47);
+			this.driver.writeString(fonts.monospace ,1, volstring ,0);
 
 		}
 		this.driver.update(true);
