@@ -299,9 +299,9 @@ if (this.page === "clock") return;
 		this.driver.setCursor(168,10);
 		this.driver.writeString( fonts.monospace ,3,ftime,8);
 		this.driver.drawLine(1, 39, 255, 39, 5, false);
-		this.driver.drawLine(190, 39, 190, 64, 5, false);
+		this.driver.drawLine(185, 39, 185, 63, 5, false);
 		// network IP
-		this.driver.setCursor(15,50);
+		this.driver.setCursor(15,46);
 		this.driver.writeString(fonts.monospace ,2, (this.ip?this.ip:"No network...") ,5);
 		// Volume
 		if(this.data && this.data.volume !== null ){
