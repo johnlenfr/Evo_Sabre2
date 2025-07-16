@@ -294,11 +294,11 @@ if (this.page === "clock") return;
 		//  function(font, size, string, color)
 		// date
 		this.driver.setCursor(3, 10);
-		this.driver.writeString( fonts.monospace ,3,fdate,4);
+		this.driver.writeString( fonts.monospace ,3,fdate,8);
 		// time
 		this.driver.setCursor(168,10);
-		this.driver.writeString( fonts.monospace ,3,ftime,4);
-		this.driver.drawLine(1, 41, 255, 41, 4, false);
+		this.driver.writeString( fonts.monospace ,3,ftime,8);
+		this.driver.drawLine(1, 38, 255, 38, 5, false);
 		// network IP
 		this.driver.setCursor(35,47);
 		this.driver.writeString(fonts.monospace ,1, (this.ip?this.ip:"No network...") ,5);
