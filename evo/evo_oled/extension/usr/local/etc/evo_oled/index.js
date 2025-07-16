@@ -301,16 +301,15 @@ if (this.page === "clock") return;
 		this.driver.drawLine(1, 39, 255, 39, 4, false);
 		this.driver.drawLine(185, 39, 185, 64, 5, false);
 		// network IP
-		//this.driver.setCursor(15,50);
-		this.driver.setCursor(15,64);
+		this.driver.setCursor(15,46);
 		this.driver.writeString(fonts.monospace ,2, (this.ip?this.ip:"No network...") ,8);
 		// Volume
 		if(this.data && this.data.volume !== null ){
 			let volstring = this.data.volume.toString();
 			if(this.data.mute === true || volstring === "0") volstring = "X";
-			this.driver.setCursor(200,54);
+			this.driver.setCursor(200,50);
 			this.driver.writeString(fonts.icons , 1 , "0" ,8); 
-			this.driver.setCursor(210,50);
+			this.driver.setCursor(210,46);
 			this.driver.writeString(fonts.monospace ,2, volstring ,8);
 		}
 		this.driver.update(true);
