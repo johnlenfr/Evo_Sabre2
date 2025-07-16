@@ -21,11 +21,10 @@ var CONTRAST = 254; // range 1-254
 var extn_exit_sleep_mode = false;
 
 // PJS : Extract the date and time formats
-var DATE_FORMAT = "DD/MM/YYYY"
+var DATE_FORMAT = "DD/MM/YY"
 var TIME_FORMAT = "HH:mm"
 
 var PENDINGSETCONTRAST = false
-
 
 const opts = {
 	width: 256,
@@ -36,7 +35,6 @@ const opts = {
 	divisor : 32, 
 	main_rate : 60
 };
-
 
 http.createServer(server).listen(4153);
 function server(req,res){
@@ -292,11 +290,11 @@ if (this.page === "clock") return;
 		ftime = date.format(new Date(),TIME_FORMAT);
 		
 		//  function(font, size, string, color)
-		this.driver.setCursor(10, 15);
+		this.driver.setCursor(10, 10);
 		this.driver.writeString( fonts.monospace ,3,fdate,3);
 		
-		this.driver.setCursor(165,15);
-		this.driver.writeString( fonts.monospace ,3,ftime,6);
+		this.driver.setCursor(165,10);
+		this.driver.writeString( fonts.monospace ,3,ftime,3);
 		this.driver.drawLine(1, 41, 255, 41, 5, false);
 		
 		
@@ -330,10 +328,10 @@ if (this.page === "lms_not_found") return;
 		this.driver.buffer.fill(0x00);
 		
 		this.driver.setCursor(10, 0);
-		this.driver.writeString( fonts.monospace ,2,"LMS IS NOT RUNNING",3);
+		this.driver.writeString( fonts.monospace ,2,"LMS IS NOT RUNNING",2);
 
 		this.driver.setCursor(10, 25);
-		this.driver.writeString( fonts.monospace ,2,"Retrying in... "+timer,3);
+		this.driver.writeString( fonts.monospace ,2,"Retrying in... "+timer,2);
 		
 		this.driver.update(true);
 		timer--;
