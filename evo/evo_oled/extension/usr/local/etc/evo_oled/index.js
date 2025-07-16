@@ -418,7 +418,7 @@ ap_oled.prototype.playback_mode = function(){
         if(this.text_to_display.length){ 
           //  if the whole text is short enough to fit the whole screen
           if( this.text_width <= this.width ){
-            this.driver.setCursor( 0, 17 );
+            this.driver.setCursor( 0, 14 );
             this.driver.writeStringUnifont(this.text_to_display,9 );  
           }
           else{ // text overflows the display (very likely considering it's 256px) : make the text scroll alongside its horizontal direction
