@@ -15,7 +15,7 @@ const default_config_path = fs.readFileSync(__dirname + '/lms/default_path').toS
 
 var TIME_BEFORE_CLOCK = 15000; // in ms
 var TIME_BEFORE_SCREENSAVER = 25000; // in ms
-var TIME_BEFORE_DEEPSLEEP = 100; // in ms
+var TIME_BEFORE_DEEPSLEEP = 10; // in ms
 var LOGO_DURATION = 2000; // in ms
 var CONTRAST = 254; // range 1-254
 var extn_exit_sleep_mode = false;
