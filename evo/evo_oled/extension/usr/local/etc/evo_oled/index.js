@@ -299,16 +299,17 @@ if (this.page === "clock") return;
 		this.driver.setCursor(168,10);
 		this.driver.writeString( fonts.monospace ,3,ftime,8);
 		this.driver.drawLine(1, 39, 255, 39, 5, false);
+		this.driver.drawLine(190, 39, 190, 55, 5, false);
 		// network IP
-		this.driver.setCursor(20,47);
+		this.driver.setCursor(15,50);
 		this.driver.writeString(fonts.monospace ,2, (this.ip?this.ip:"No network...") ,5);
 		// Volume
 		if(this.data && this.data.volume !== null ){
 			let volstring = this.data.volume.toString();
 			if(this.data.mute === true || volstring === "0") volstring = "X";
-			this.driver.setCursor(195,55);
+			this.driver.setCursor(195,50);
 			this.driver.writeString(fonts.icons , 1 , "0" ,5); 
-			this.driver.setCursor(205,47);
+			this.driver.setCursor(205,46);
 			this.driver.writeString(fonts.monospace ,2, volstring ,5);
 		}
 		this.driver.update(true);
