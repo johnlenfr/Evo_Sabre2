@@ -298,8 +298,8 @@ if (this.page === "clock") return;
 		// time
 		this.driver.setCursor(168,10);
 		this.driver.writeString( fonts.monospace ,3,ftime,7);
-		this.driver.drawLine(1, 39, 255, 39, 2, false);
-		this.driver.drawLine(185, 39, 185, 63, 2, false);
+		this.driver.drawLine(1, 39, 255, 39, 3, false);
+		this.driver.drawLine(185, 39, 185, 64, 3, false);
 		// network IP
 		this.driver.setCursor(15,46);
 		this.driver.writeString(fonts.monospace ,2, (this.ip?this.ip:"No network...") ,7);
