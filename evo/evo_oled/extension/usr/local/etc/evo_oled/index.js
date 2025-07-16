@@ -18,7 +18,7 @@ const default_config_path = fs.readFileSync(__dirname + '/lms/default_path').toS
 var TIME_BEFORE_CLOCK = 5000; // in ms
 var TIME_BEFORE_SCREENSAVER = 10000; // in ms
 var TIME_BEFORE_DEEPSLEEP = 10; // in ms
-var LOGO_DURATION = 1500; // in ms
+var LOGO_DURATION = 1000; // in ms
 var CONTRAST = 254; // range 1-254
 var extn_exit_sleep_mode = false;
 
@@ -292,48 +292,24 @@ if (this.page === "clock") return;
 		ftime = date.format(new Date(),TIME_FORMAT);
 		
 		//  function(font, size, string, color)
+		// date
 		this.driver.setCursor(3, 10);
-		this.driver.writeString( fonts.monospace ,3,fdate,5);
-		
+		this.driver.writeString( fonts.monospace ,3,fdate,4);
+		// time
 		this.driver.setCursor(168,10);
-		this.driver.writeString( fonts.monospace ,3,ftime,5);
-		this.driver.drawLine(1, 41, 255, 41, 5, false);
-		
-		
-		//this.driver.setCursor(35,47);
-		this.driver.setCursor(0,47);
-		this.driver.writeString(fonts.monospace ,1, (this.ip?this.ip:"No network...") ,4);
-		
-		
+		this.driver.writeString( fonts.monospace ,3,ftime,4);
+		this.driver.drawLine(1, 41, 255, 41, 4, false);
+		// network IP
+		this.driver.setCursor(35,47);
+		this.driver.writeString(fonts.monospace ,1, (this.ip?this.ip:"No network...") ,5);
+		// Volume
 		if(this.data && this.data.volume !== null ){
 			let volstring = this.data.volume.toString();
 			if(this.data.mute === true || volstring === "0") volstring = "X";
-			//this.driver.setCursor(195,47);
-			//this.driver.writeString(fonts.icons , 1 , "0" ,4); 
+			this.driver.setCursor(195,47);
+			this.driver.writeString(fonts.icons , 1 , "0" ,5); 
 			this.driver.setCursor(205,47);
-			// this.driver.writeString(fonts.monospace ,1, volstring ,6);
-			this.driver.writeString(fonts.monospace ,1, "0" ,50);
-			this.driver.setCursor(185,47);
-			this.driver.writeString(fonts.monospace ,1, "9" ,40);
-			this.driver.setCursor(175,47);
-			this.driver.writeString(fonts.monospace ,1, "8" ,8);
-			this.driver.setCursor(165,47);
-			this.driver.writeString(fonts.monospace ,1, "7" ,7);
-			this.driver.setCursor(155,47);
-			this.driver.writeString(fonts.monospace ,1, "6" ,6);
-			this.driver.setCursor(145,47);
-			this.driver.writeString(fonts.monospace ,1, "5" ,5);
-			this.driver.setCursor(135,47);
-			this.driver.writeString(fonts.monospace ,1, "4" ,4);
-			this.driver.setCursor(125,47);
-			this.driver.writeString(fonts.monospace ,1, "3" ,3);
-			this.driver.setCursor(115,47);
-			this.driver.writeString(fonts.monospace ,1, "2" ,2);
-			this.driver.setCursor(105,47);
-			this.driver.writeString(fonts.monospace ,1, "1" ,1);
-			this.driver.setCursor(95,47);
-			this.driver.writeString(fonts.monospace ,1, "0" ,0);
-
+			this.driver.writeString(fonts.monospace ,1, volstring ,5);
 		}
 		this.driver.update(true);
 	}
