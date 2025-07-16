@@ -298,10 +298,10 @@ if (this.page === "clock") return;
 		// time
 		this.driver.setCursor(168,10);
 		this.driver.writeString( fonts.monospace ,3,ftime,8);
-		this.driver.drawLine(1, 38, 255, 38, 5, false);
+		this.driver.drawLine(1, 39, 255, 39, 5, false);
 		// network IP
 		this.driver.setCursor(35,47);
-		this.driver.writeString(fonts.monospace ,1, (this.ip?this.ip:"No network...") ,5);
+		this.driver.writeString(fonts.monospace ,2, (this.ip?this.ip:"No network...") ,5);
 		// Volume
 		if(this.data && this.data.volume !== null ){
 			let volstring = this.data.volume.toString();
