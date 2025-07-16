@@ -12,8 +12,8 @@ var DRIVER;
 
 const default_config_path = fs.readFileSync(__dirname + '/lms/default_path').toString() || "./";
 
-var TIME_BEFORE_CLOCK = 10000; // in ms
-var TIME_BEFORE_SCREENSAVER = 15000; // in ms
+var TIME_BEFORE_CLOCK = 15000; // in ms
+var TIME_BEFORE_SCREENSAVER = 5000; // in ms
 var TIME_BEFORE_DEEPSLEEP = 100; // in ms
 var LOGO_DURATION = 2000; // in ms
 var CONTRAST = 254; // range 1-254
@@ -487,14 +487,14 @@ ap_oled.prototype.handle_sleep = function(exit_sleep, nopostdisplay = false){
 				this.idle_timeout = setTimeout(_deepsleep_,TIME_BEFORE_DEEPSLEEP);
 			}
 			
-//			let _clock_ = ()=>{
-//				this.clock_mode();
-//				this.idle_timeout = setTimeout(_screensaver_,TIME_BEFORE_SCREENSAVER);
-//			}
+			let _clock_ = ()=>{
+				this.clock_mode();
+				this.idle_timeout = setTimeout(_screensaver_,TIME_BEFORE_SCREENSAVER);
+			}
 			
-//			this.idle_timeout = setTimeout( _clock_ , TIME_BEFORE_CLOCK );
+			this.idle_timeout = setTimeout( _clock_ , TIME_BEFORE_CLOCK );
 
-//			console.log("setTimeout: ", new Date())
+			console.log("setTimeout: ", new Date())
 
 			this.idle_timeout = setTimeout(_screensaver_,TIME_BEFORE_SCREENSAVER);
 
