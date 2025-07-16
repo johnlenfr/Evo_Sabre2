@@ -294,23 +294,24 @@ if (this.page === "clock") return;
 		//  function(font, size, string, color)
 		// date
 		this.driver.setCursor(3, 10);
-		this.driver.writeString( fonts.monospace ,3,fdate,7);
+		this.driver.writeString( fonts.monospace ,3,fdate,8);
 		// time
 		this.driver.setCursor(168,10);
-		this.driver.writeString( fonts.monospace ,3,ftime,7);
-		this.driver.drawLine(1, 39, 255, 39, 3, false);
-		this.driver.drawLine(185, 39, 185, 64, 3, false);
+		this.driver.writeString( fonts.monospace ,3,ftime,8);
+		this.driver.drawLine(1, 39, 255, 39, 4, false);
+		this.driver.drawLine(185, 39, 185, 64, 5, false);
 		// network IP
-		this.driver.setCursor(15,50);
-		this.driver.writeString(fonts.monospace ,2, (this.ip?this.ip:"No network...") ,7);
+		//this.driver.setCursor(15,50);
+		this.driver.setCursor(15,64);
+		this.driver.writeString(fonts.monospace ,2, (this.ip?this.ip:"No network...") ,8);
 		// Volume
 		if(this.data && this.data.volume !== null ){
 			let volstring = this.data.volume.toString();
 			if(this.data.mute === true || volstring === "0") volstring = "X";
 			this.driver.setCursor(200,54);
-			this.driver.writeString(fonts.icons , 1 , "0" ,7); 
+			this.driver.writeString(fonts.icons , 1 , "0" ,8); 
 			this.driver.setCursor(210,50);
-			this.driver.writeString(fonts.monospace ,2, volstring ,7);
+			this.driver.writeString(fonts.monospace ,2, volstring ,8);
 		}
 		this.driver.update(true);
 	}
