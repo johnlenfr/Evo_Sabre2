@@ -290,7 +290,7 @@ if (this.page === "clock") return;
 		ftime = date.format(new Date(),TIME_FORMAT);
 		
 		//  function(font, size, string, color)
-		this.driver.setCursor(10, 10);
+		this.driver.setCursor(5, 10);
 		this.driver.writeString( fonts.monospace ,3,fdate,3);
 		
 		this.driver.setCursor(165,10);
@@ -369,18 +369,18 @@ ap_oled.prototype.playback_mode = function(){
                   if(this.data.mute === true || volstring === "0") volstring = "X";
                   
                   this.driver.setCursor(0,0);
-                  this.driver.writeString(fonts.icons , 1 , "0" ,5); 
+                  this.driver.writeString(fonts.icons , 1 , "0" ,4); 
                   this.driver.setCursor(10,1);
-                  this.driver.writeString(fonts.monospace ,1, volstring ,5);
+                  this.driver.writeString(fonts.monospace ,1, volstring ,6);
               }    
         
         // repeat
         if(this.data.repeatSingle){
           this.driver.setCursor(232,0);
-          this.driver.writeString(fonts.icons , 1 , "5" ,5); 
+          this.driver.writeString(fonts.icons , 1 , "5" ,4); 
         } else if( this.data.repeat ){
           this.driver.setCursor(232,0);
-                  this.driver.writeString(fonts.icons , 1 , "4" ,5); 
+                  this.driver.writeString(fonts.icons , 1 , "4" ,6); 
               }
         
         // track type (flac, mp3, webradio...etc.)
