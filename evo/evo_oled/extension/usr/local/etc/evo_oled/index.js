@@ -369,30 +369,30 @@ ap_oled.prototype.playback_mode = function(){
                   if(this.data.mute === true || volstring === "0") volstring = "X";
                   
                   this.driver.setCursor(0,0);
-                  this.driver.writeString(fonts.icons , 1 , "0" ,4); 
+                  this.driver.writeString(fonts.icons , 1 , "0" ,9); 
                   this.driver.setCursor(10,1);
-                  this.driver.writeString(fonts.monospace ,1, volstring ,6);
+                  this.driver.writeString(fonts.monospace ,1, volstring ,9);
               }    
         
         // repeat
         if(this.data.repeatSingle){
           this.driver.setCursor(232,0);
-          this.driver.writeString(fonts.icons , 1 , "5" ,4); 
+          this.driver.writeString(fonts.icons , 1 , "5" ,9); 
         } else if( this.data.repeat ){
           this.driver.setCursor(232,0);
-                  this.driver.writeString(fonts.icons , 1 , "4" ,6); 
+                  this.driver.writeString(fonts.icons , 1 , "4" ,9); 
               }
         
         // track type (flac, mp3, webradio...etc.)
         if(this.data.trackType){
           this.driver.setCursor(35,1);
-          this.driver.writeString(fonts.monospace , 1 , this.data.trackType ,4); 
+          this.driver.writeString(fonts.monospace , 1 , this.data.trackType ,9); 
         }
       
         // string with any data we have regarding sampling rate and bitrate
         if(this.footertext){
           this.driver.setCursor(0,57);
-          this.driver.writeString(fonts.monospace , 1 , this.footertext ,5); 
+          this.driver.writeString(fonts.monospace , 1 , this.footertext ,9); 
         }
         
         // play pause stop logo
@@ -410,7 +410,7 @@ ap_oled.prototype.playback_mode = function(){
               break;
           }    
                   this.driver.setCursor(246,0);
-                  this.driver.writeString(fonts.icons ,1, status_symbol ,6);
+                  this.driver.writeString(fonts.icons ,1, status_symbol ,9);
         }
 
         // track title album artists
@@ -418,7 +418,7 @@ ap_oled.prototype.playback_mode = function(){
           //  if the whole text is short enough to fit the whole screen
           if( this.text_width <= this.width ){
             this.driver.setCursor( 0, 17 );
-            this.driver.writeStringUnifont(this.text_to_display,7 );  
+            this.driver.writeStringUnifont(this.text_to_display,9 );  
           }
           else{ // text overflows the display (very likely considering it's 256px) : make the text scroll alongside its horizontal direction
             let text_to_display = this.text_to_display;
@@ -428,7 +428,7 @@ ap_oled.prototype.playback_mode = function(){
             }
             this.driver.cursor_x = this.scroller_x;
             this.driver.cursor_y = 14
-            this.driver.writeStringUnifont(text_to_display,7 );
+            this.driver.writeStringUnifont(text_to_display,9 );
           }
         }
         // seek data
@@ -443,7 +443,7 @@ ap_oled.prototype.playback_mode = function(){
           this.driver.cursor_y = 43;
           this.driver.cursor_x = 83;
           this.driver.writeString(fonts.monospace , 1 , this.data.seek_string ,5); 
-          this.driver.fillRect(3, Y_seekbar, border_right * this.data.ratiobar / 100, 4, 4);
+          this.driver.fillRect(3, Y_seekbar, border_right * this.data.ratiobar / 100, 4, 6);
         }
       }
 		
