@@ -16,7 +16,7 @@ const default_config_path = fs.readFileSync(__dirname + '/lms/default_path').toS
 var TIME_BEFORE_CLOCK = 15000; // in ms
 var TIME_BEFORE_SCREENSAVER = 25000; // in ms
 var TIME_BEFORE_DEEPSLEEP = 10; // in ms
-var LOGO_DURATION = 2000; // in ms
+var LOGO_DURATION = 1000; // in ms
 var CONTRAST = 254; // range 1-254
 var extn_exit_sleep_mode = false;
 
@@ -291,10 +291,10 @@ if (this.page === "clock") return;
 		let fdate = date.format(new Date(),DATE_FORMAT),
 		ftime = date.format(new Date(),TIME_FORMAT);
 		
-		this.driver.setCursor(90, 0);
-		this.driver.writeString( fonts.monospace ,1,fdate,3);
+		this.driver.setCursor(10, 15);
+		this.driver.writeString( fonts.monospace ,3,fdate,3);
 		
-		this.driver.setCursor(50,15);
+		this.driver.setCursor(165,15);
 		this.driver.writeString( fonts.monospace ,3,ftime,6);
 		this.driver.drawLine(1, 41, 255, 41, 5, false);
 		
