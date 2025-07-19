@@ -231,9 +231,22 @@ if (this.page === "snake_screensaver") return;
 	clearInterval(this.update_interval);
 	this.page = "snake_screensaver";
 
-	// print logo
-	this.driver.setCursor(15,46);
-        this.driver.writeString(fonts.monospace ,2,"EVO SABRE",8);
+        this.refresh_action = ()=>{
+		
+		this.driver.buffer.fill(0x00);
+		
+		this.driver.setCursor(10, 0);
+		this.driver.writeString( fonts.monospace ,2,"SCREENSAVER",2);
+
+		this.driver.setCursor(10, 25);
+		this.driver.writeString( fonts.monospace ,2,"Retrying in... "+timer,2);
+		
+		this.driver.update(true);
+		timer--;
+		if(timer<0){
+		      clearInterval(this.update_interval);
+		}
+        }
 	
         /*
 	DRIVER = OLED;
