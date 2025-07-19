@@ -230,9 +230,10 @@ ap_oled.prototype.snake_screensaver = function(){
 if (this.page === "snake_screensaver") return;
 	clearInterval(this.update_interval);
 	this.page = "snake_screensaver";
-        
-	this.driver.setCursor(168,10);
-        this.driver.writeString( fonts.monospace ,3,ftime,8);
+
+	// print logo
+	this.driver.setCursor(15,46);
+        this.driver.writeString(fonts.monospace ,2,"EVO SABRE",8);
 	
         /*
 	DRIVER = OLED;
@@ -241,7 +242,7 @@ if (this.page === "snake_screensaver") return;
 	});
 	 */
 
-	/*
+        /*
 	let box_pos = [0,0];
 	let count = 0;
 	let flip = false;
@@ -286,7 +287,8 @@ if (this.page === "snake_screensaver") return;
 		if(y > this.height ) screen_saver_animation_reset();
 	}
         */
-	this.update_interval = setInterval( ()=>{this.refresh_action()}, 40);
+	this.refresh_action();
+	this.update_interval = setInterval( ()=>{this.refresh_action()}, 1000);
 }
 
 ap_oled.prototype.deep_sleep = function(){
