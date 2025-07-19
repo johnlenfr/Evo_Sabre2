@@ -221,30 +221,11 @@ ap_oled.prototype.listen_to = async function(api,frequency){
 
 }
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-ap_oled.prototype.snake_screensaver = function(){
+/*ap_oled.prototype.snake_screensaver = function(){
 if (this.page === "snake_screensaver") return;
 	clearInterval(this.update_interval);
 	this.page = "snake_screensaver";
-	
-        let timer = TIME_BEFORE_DEEPSLEEP /1000;
-	
-        this.refresh_action = ()=>{
-		this.driver.buffer.fill(0x00);
-		
-		this.driver.setCursor(50, 15);
-		this.driver.writeString( fonts.monospace ,3,"EVO SABRE",5);
-		
-                this.driver.drawLine(1, 47, 255, 47, 3, false);
-		this.driver.setCursor(125, 52);
-		this.driver.writeString( fonts.monospace ,1,"Deep sleep in... "+timer,1);
-		
-		this.driver.update(true);
-		timer--;
-	}
-	this.refresh_action();
-	this.update_interval = setInterval( ()=>{this.refresh_action()}, 1000);
-	
-        /*
+
 	let box_pos = [0,0];
 	let count = 0;
 	let flip = false;
@@ -288,9 +269,33 @@ if (this.page === "snake_screensaver") return;
 		this.driver.update(true);
 		if(y > this.height ) screen_saver_animation_reset();
 	}
-        */
-	
 }
+*/
+
+ap_oled.prototype.text_screensaver = function(){
+if (this.page === "text_screensaver") return;
+	clearInterval(this.update_interval);
+	this.page = "text_screensaver";
+	
+        let timer = TIME_BEFORE_DEEPSLEEP /1000;
+	
+        this.refresh_action = ()=>{
+		this.driver.buffer.fill(0x00);
+		
+		this.driver.setCursor(50, 15);
+		this.driver.writeString( fonts.monospace ,3,"EVO SABRE",5);
+		
+                this.driver.drawLine(1, 47, 255, 47, 3, false);
+		this.driver.setCursor(125, 52);
+		this.driver.writeString( fonts.monospace ,1,"Deep sleep in... "+timer,1);
+		
+		this.driver.update(true);
+		timer--;
+	}
+	this.refresh_action();
+	this.update_interval = setInterval( ()=>{this.refresh_action()}, 1000);
+}
+
 
 ap_oled.prototype.deep_sleep = function(){
 if (this.page === "deep_sleep") return;
@@ -504,7 +509,8 @@ ap_oled.prototype.handle_sleep = function(exit_sleep, nopostdisplay = false){
 			}
 		
 			let _screensaver_ = ()=>{
-				this.snake_screensaver();
+				//this.snake_screensaver();
+				this.text_screensaver();
 				this.idle_timeout = setTimeout(_deepsleep_,TIME_BEFORE_DEEPSLEEP);
 			}
 
