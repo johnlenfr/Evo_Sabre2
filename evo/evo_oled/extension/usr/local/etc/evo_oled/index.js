@@ -484,13 +484,14 @@ ap_oled.prototype.handle_sleep = function(exit_sleep, nopostdisplay = false){
 	if( !exit_sleep ){ // Est-ce que l'afficheur devrait passer en mode veille ? 
 		
 		if(!this.idle_timeout){ // vérifie si l'écran n'attend pas déjà de passer en veille (instruction initiée dans un cycle précédent)
-			
-		
+
 			let _deepsleep_ = ()=>{this.deep_sleep();}
 		
 			let _screensaver_ = ()=>{
 				// this.snake_screensaver();
-				displaylogo;
+				OLED.driver.load_and_display_logo( default_config_path + 'logo.logo', (displaylogo)=>{ 
+				console.log("[EVO DISPLAY#2] : logo loaded")
+				});
 				this.idle_timeout = setTimeout(_deepsleep_,TIME_BEFORE_DEEPSLEEP);
 			}
 
@@ -502,9 +503,7 @@ ap_oled.prototype.handle_sleep = function(exit_sleep, nopostdisplay = false){
 			this.idle_timeout = setTimeout( _clock_ , TIME_BEFORE_CLOCK );
 			
 			//console.log("setTimeout: ", new Date())
-
 			// this.idle_timeout = setTimeout(_screensaver_,TIME_BEFORE_SCREENSAVER);
-
 		}
 	}
 	else{
