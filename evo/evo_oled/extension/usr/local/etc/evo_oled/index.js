@@ -230,13 +230,14 @@ ap_oled.prototype.snake_screensaver = function(){
 if (this.page === "snake_screensaver") return;
 	clearInterval(this.update_interval);
 	this.page = "snake_screensaver";
-        
+	
+        /*
 	DRIVER = OLED;
        	OLED.driver.load_and_display_logo( default_config_path + 'logo.logo', (displaylogo)=>{ 
 	console.log("[EVO DISPLAY#2] : logo loaded")
 	});
+	 */
 	
-	/*
 	let box_pos = [0,0];
 	let count = 0;
 	let flip = false;
@@ -280,8 +281,8 @@ if (this.page === "snake_screensaver") return;
 		this.driver.update(true);
 		if(y > this.height ) screen_saver_animation_reset();
 	}
- */
-	this.update_interval = setInterval( ()=>{this.refresh_action()}, 1000);
+
+	this.update_interval = setInterval( ()=>{this.refresh_action()}, 40);
 }
 
 ap_oled.prototype.deep_sleep = function(){
