@@ -225,7 +225,7 @@ ap_oled.prototype.listen_to = async function(api,frequency){
 	}
 
 }
-
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 ap_oled.prototype.snake_screensaver = function(){
 if (this.page === "snake_screensaver") return;
 	//clearInterval(this.update_interval);
@@ -236,17 +236,17 @@ if (this.page === "snake_screensaver") return;
         this.refresh_action = ()=>{
 		this.driver.buffer.fill(0x00);
 
-                this.driver.drawLine(1, 39, 255, 39, 4, false);
-		this.driver.drawLine(185, 39, 185, 64, 5, false);
+                //this.driver.drawLine(1, 39, 255, 39, 4, false);
+		//this.driver.drawLine(185, 39, 185, 64, 5, false);
 		
-		this.driver.setCursor(10, 40);
-		this.driver.writeString( fonts.monospace ,3,"EVO SABRE",2);
-		this.driver.setCursor(10, 50);
-		this.driver.writeString( fonts.monospace ,1,"2x 2S9038Q2M 32-bit",2);
+		this.driver.setCursor(10, 10);
+		this.driver.writeString( fonts.monospace ,4,"EVO SABRE",8);
+		this.driver.setCursor(150, 50);
+		this.driver.writeString( fonts.monospace ,2,"2x 2S9038Q2M 32-bit",8);
                 
 		// network IP
-		this.driver.setCursor(170, 60);
-		this.driver.writeString( fonts.monospace ,2,"Deep sleep in... "+timer,2);
+		this.driver.setCursor(170, 50);
+		this.driver.writeString( fonts.monospace ,1,"Deep sleep in... "+timer,4);
 		
 		this.driver.update(true);
 		timer--;
