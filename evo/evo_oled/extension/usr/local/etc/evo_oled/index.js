@@ -231,27 +231,22 @@ if (this.page === "snake_screensaver") return;
 	//clearInterval(this.update_interval);
 	this.page = "snake_screensaver";
 	
-        let timer = 300;
+        let timer = TIME_BEFORE_DEEPSLEEP /1000;
 	
         this.refresh_action = ()=>{
 		this.driver.buffer.fill(0x00);
-
-                //this.driver.drawLine(1, 39, 255, 39, 4, false);
-		//this.driver.drawLine(185, 39, 185, 64, 5, false);
 		
-		this.driver.setCursor(10, 10);
-		this.driver.writeString( fonts.monospace ,3,"EVO SABRE",8);
+		this.driver.setCursor(50, 5);
+		this.driver.writeString( fonts.monospace ,3,"EVO SABRE",3);
 		this.driver.setCursor(150, 40);
-		this.driver.writeString( fonts.monospace ,2,"2x 2S9038Q2M 32-bit",8);
-                
-		this.driver.setCursor(100, 50);
-		this.driver.writeString( fonts.monospace ,1,"Deep sleep in... "+timer,4);
+		this.driver.writeString( fonts.monospace ,2,"2x 2S9038Q2M 32-bit",3);
+		
+                this.driver.drawLine(1, 45, 255, 45, 3, false);
+		this.driver.setCursor(120, 50);
+		this.driver.writeString( fonts.monospace ,1,"Deep sleep in... "+timer,1);
 		
 		this.driver.update(true);
 		timer--;
-		if(timer<0){
-	      clearInterval(this.update_interval);
-	    }
 	}
 	this.refresh_action();
 	this.update_interval = setInterval( ()=>{this.refresh_action()}, 1000);
@@ -310,7 +305,6 @@ if (this.page === "deep_sleep") return;
 	clearInterval(this.update_interval);
 	this.page = "deep_sleep";
 	this.driver.turnOffDisplay();
-
 }
 
 ap_oled.prototype.clock_mode = function(){
