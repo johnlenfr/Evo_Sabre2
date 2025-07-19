@@ -228,33 +228,19 @@ ap_oled.prototype.listen_to = async function(api,frequency){
 
 ap_oled.prototype.snake_screensaver = function(){
 if (this.page === "snake_screensaver") return;
-	clearInterval(this.update_interval);
+	//clearInterval(this.update_interval);
 	this.page = "snake_screensaver";
 
         this.refresh_action = ()=>{
-		
-		this.driver.buffer.fill(0x00);
-		
-		this.driver.setCursor(10, 0);
-		this.driver.writeString( fonts.monospace ,2,"SCREENSAVER",2);
-
-		this.driver.setCursor(10, 25);
-		this.driver.writeString( fonts.monospace ,2,"Retrying in... "+timer,2);
-		
-		this.driver.update(true);
-		timer--;
-		if(timer<0){
-		      clearInterval(this.update_interval);
-		}
-        }
-	
-        /*
-	DRIVER = OLED;
+		//DRIVER = OLED;
        	OLED.driver.load_and_display_logo( default_config_path + 'logo.logo', (displaylogo)=>{ 
 	console.log("[EVO DISPLAY#2] : logo loaded")
-	});
-	 */
-
+		});
+		
+        }
+	this.refresh_action();
+	this.update_interval = setInterval( ()=>{this.refresh_action()}, 1000);
+	
         /*
 	let box_pos = [0,0];
 	let count = 0;
@@ -300,8 +286,7 @@ if (this.page === "snake_screensaver") return;
 		if(y > this.height ) screen_saver_animation_reset();
 	}
         */
-	this.refresh_action();
-	this.update_interval = setInterval( ()=>{this.refresh_action()}, 1000);
+	
 }
 
 ap_oled.prototype.deep_sleep = function(){
