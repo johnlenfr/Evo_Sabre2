@@ -238,11 +238,11 @@ if (this.page === "snake_screensaver") return;
 		
 		this.driver.setCursor(50, 8);
 		this.driver.writeString( fonts.monospace ,3,"EVO SABRE",5);
-		this.driver.setCursor(70, 36);
+		this.driver.setCursor(90, 36);
 		this.driver.writeString( fonts.monospace ,1,"2x 2S9038Q2M 32-bit",5);
 		
-                this.driver.drawLine(1, 45, 255, 45, 3, false);
-		this.driver.setCursor(125, 50);
+                this.driver.drawLine(1, 47, 255, 47, 3, false);
+		this.driver.setCursor(125, 52);
 		this.driver.writeString( fonts.monospace ,1,"Deep sleep in... "+timer,1);
 		
 		this.driver.update(true);
