@@ -230,7 +230,8 @@ ap_oled.prototype.snake_screensaver = function(){
 if (this.page === "snake_screensaver") return;
 	clearInterval(this.update_interval);
 	this.page = "snake_screensaver";
-
+        
+	DRIVER = OLED;
        	OLED.driver.load_and_display_logo( default_config_path + 'logo.logo', (displaylogo)=>{ 
 	console.log("[EVO DISPLAY#2] : logo loaded")
 	});
