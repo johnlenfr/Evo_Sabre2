@@ -21,7 +21,7 @@ var LOGO_DURATION = 3500; // in ms
 */
 var TIME_BEFORE_CLOCK = 8000; // in ms
 var TIME_BEFORE_SCREENSAVER = 6000; // in ms
-var TIME_BEFORE_DEEPSLEEP = 6000; // in ms
+var TIME_BEFORE_DEEPSLEEP = 12000; // in ms
 var LOGO_DURATION = 5000; // in ms
 
 var CONTRAST = 254; // range 1-254
@@ -228,7 +228,7 @@ ap_oled.prototype.listen_to = async function(api,frequency){
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 ap_oled.prototype.snake_screensaver = function(){
 if (this.page === "snake_screensaver") return;
-	//clearInterval(this.update_interval);
+	clearInterval(this.update_interval);
 	this.page = "snake_screensaver";
 	
         let timer = TIME_BEFORE_DEEPSLEEP /1000;
