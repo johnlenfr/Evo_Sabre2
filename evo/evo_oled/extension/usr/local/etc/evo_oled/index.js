@@ -21,7 +21,7 @@ var LOGO_DURATION = 3500; // in ms
 */
 var TIME_BEFORE_CLOCK = 8000; // in ms
 var TIME_BEFORE_SCREENSAVER = 6000; // in ms
-var TIME_BEFORE_DEEPSLEEP = 12000; // in ms
+var TIME_BEFORE_DEEPSLEEP = 20000; // in ms
 var LOGO_DURATION = 5000; // in ms
 
 var CONTRAST = 254; // range 1-254
@@ -236,10 +236,10 @@ if (this.page === "snake_screensaver") return;
         this.refresh_action = ()=>{
 		this.driver.buffer.fill(0x00);
 		
-		this.driver.setCursor(50, 5);
-		this.driver.writeString( fonts.monospace ,3,"EVO SABRE",3);
+		this.driver.setCursor(50, 15);
+		this.driver.writeString( fonts.monospace ,3,"EVO SABRE",5);
 		this.driver.setCursor(150, 40);
-		this.driver.writeString( fonts.monospace ,2,"2x 2S9038Q2M 32-bit",3);
+		this.driver.writeString( fonts.monospace ,1,"2x 2S9038Q2M 32-bit",5);
 		
                 this.driver.drawLine(1, 45, 255, 45, 3, false);
 		this.driver.setCursor(120, 50);
