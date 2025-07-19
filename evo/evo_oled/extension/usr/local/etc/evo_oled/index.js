@@ -19,9 +19,9 @@ var TIME_BEFORE_SCREENSAVER = 600000; // in ms
 var TIME_BEFORE_DEEPSLEEP = 600000; // in ms
 var LOGO_DURATION = 3500; // in ms
 */
-var TIME_BEFORE_CLOCK = 1200; // in ms
+var TIME_BEFORE_CLOCK = 8000; // in ms
 var TIME_BEFORE_SCREENSAVER = 6000; // in ms
-var TIME_BEFORE_DEEPSLEEP = 12000; // in ms
+var TIME_BEFORE_DEEPSLEEP = 6000; // in ms
 var LOGO_DURATION = 5000; // in ms
 
 var CONTRAST = 254; // range 1-254
@@ -230,7 +230,12 @@ ap_oled.prototype.snake_screensaver = function(){
 if (this.page === "snake_screensaver") return;
 	clearInterval(this.update_interval);
 	this.page = "snake_screensaver";
+
+       	OLED.driver.load_and_display_logo( default_config_path + 'logo.logo', (displaylogo)=>{ 
+	console.log("[EVO DISPLAY#2] : logo loaded")
+	});
 	
+	/*
 	let box_pos = [0,0];
 	let count = 0;
 	let flip = false;
@@ -274,7 +279,8 @@ if (this.page === "snake_screensaver") return;
 		this.driver.update(true);
 		if(y > this.height ) screen_saver_animation_reset();
 	}
-	this.update_interval = setInterval( ()=>{this.refresh_action()}, 40);
+ */
+	this.update_interval = setInterval( ()=>{this.refresh_action()}, 1000);
 }
 
 ap_oled.prototype.deep_sleep = function(){
@@ -490,8 +496,7 @@ ap_oled.prototype.handle_sleep = function(exit_sleep, nopostdisplay = false){
 			}
 		
 			let _screensaver_ = ()=>{
-				// this.snake_screensaver();
-				OLED.driver.load_and_display_logo( default_config_path + 'logo.logo', displaylogo);
+				this.snake_screensaver();
 				this.idle_timeout = setTimeout(_deepsleep_,TIME_BEFORE_DEEPSLEEP);
 			}
 
