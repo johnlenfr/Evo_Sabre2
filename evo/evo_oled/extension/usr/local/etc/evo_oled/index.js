@@ -13,16 +13,11 @@ var DRIVER;
 const default_config_path = fs.readFileSync(__dirname + '/lms/default_path').toString() || "./";
 
 
-/*
+
 var TIME_BEFORE_CLOCK = 120000; // in ms
 var TIME_BEFORE_SCREENSAVER = 600000; // in ms
 var TIME_BEFORE_DEEPSLEEP = 600000; // in ms
-var LOGO_DURATION = 3500; // in ms
-*/
-var TIME_BEFORE_CLOCK = 8000; // in ms
-var TIME_BEFORE_SCREENSAVER = 6000; // in ms
-var TIME_BEFORE_DEEPSLEEP = 40000; // in ms
-var LOGO_DURATION = 5000; // in ms
+var LOGO_DURATION = 7000; // in ms
 
 var CONTRAST = 254; // range 1-254
 var extn_exit_sleep_mode = false;
