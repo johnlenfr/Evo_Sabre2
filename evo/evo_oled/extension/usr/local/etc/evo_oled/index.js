@@ -491,7 +491,6 @@ ap_oled.prototype.handle_sleep = function(exit_sleep, nopostdisplay = false){
 			let _screensaver_ = ()=>{
 				// this.snake_screensaver();
 				displaylogo;
-			});
 				this.idle_timeout = setTimeout(_deepsleep_,TIME_BEFORE_DEEPSLEEP);
 			}
 
