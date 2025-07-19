@@ -236,9 +236,9 @@ if (this.page === "snake_screensaver") return;
         this.refresh_action = ()=>{
 		this.driver.buffer.fill(0x00);
 		
-		this.driver.setCursor(50, 10);
+		this.driver.setCursor(50, 8);
 		this.driver.writeString( fonts.monospace ,3,"EVO SABRE",5);
-		this.driver.setCursor(50, 40);
+		this.driver.setCursor(70, 36);
 		this.driver.writeString( fonts.monospace ,1,"2x 2S9038Q2M 32-bit",5);
 		
                 this.driver.drawLine(1, 45, 255, 45, 3, false);
