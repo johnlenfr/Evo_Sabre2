@@ -15,10 +15,8 @@ const default_config_path = fs.readFileSync(__dirname + '/lms/default_path').toS
 
 var TIME_BEFORE_CLOCK = 120000; // in ms
 var TIME_BEFORE_SCREENSAVER = 600000; // in ms
-//var TIME_BEFORE_CLOCK = 10000; // in ms
-//var TIME_BEFORE_SCREENSAVER = 5000; // in ms
-var TIME_BEFORE_DEEPSLEEP = 10; // in ms
-var LOGO_DURATION = 2500; // in ms
+var TIME_BEFORE_DEEPSLEEP = 600000; // in ms
+var LOGO_DURATION = 3500; // in ms
 var CONTRAST = 254; // range 1-254
 var extn_exit_sleep_mode = false;
 
@@ -484,7 +482,8 @@ ap_oled.prototype.handle_sleep = function(exit_sleep, nopostdisplay = false){
 			let _deepsleep_ = ()=>{this.deep_sleep();}
 		
 			let _screensaver_ = ()=>{
-				this.snake_screensaver();
+				// this.snake_screensaver();
+				displaylogo;
 				this.idle_timeout = setTimeout(_deepsleep_,TIME_BEFORE_DEEPSLEEP);
 			}
 
@@ -495,7 +494,7 @@ ap_oled.prototype.handle_sleep = function(exit_sleep, nopostdisplay = false){
 		
 			this.idle_timeout = setTimeout( _clock_ , TIME_BEFORE_CLOCK );
 			
-			console.log("setTimeout: ", new Date())
+			//console.log("setTimeout: ", new Date())
 
 			// this.idle_timeout = setTimeout(_screensaver_,TIME_BEFORE_SCREENSAVER);
 
