@@ -21,7 +21,7 @@ var LOGO_DURATION = 3500; // in ms
 */
 var TIME_BEFORE_CLOCK = 1200; // in ms
 var TIME_BEFORE_SCREENSAVER = 6000; // in ms
-var TIME_BEFORE_DEEPSLEEP = 6000; // in ms
+var TIME_BEFORE_DEEPSLEEP = 12000; // in ms
 var LOGO_DURATION = 5000; // in ms
 
 var CONTRAST = 254; // range 1-254
