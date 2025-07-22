@@ -151,7 +151,7 @@ ap_oled.prototype.listen_to = async function(api,frequency){
       this.handle_sleep(true);	
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-console.log("[DEBUG] Contenu détaillé de streamer :", JSON.stringify(streamer, null, 2));
+console.log("[DEBUG] Contenu de streamer :", streamer);
 
 		
       streamer.on("connectionLost", d =>{
