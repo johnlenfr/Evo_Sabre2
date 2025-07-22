@@ -16,7 +16,7 @@ const default_config_path = fs.readFileSync(__dirname + '/lms/default_path').toS
 var TIME_BEFORE_CLOCK = 120000; // in ms
 var TIME_BEFORE_SCREENSAVER = 600000; // in ms
 var TIME_BEFORE_DEEPSLEEP = 600000; // in ms
-var LOGO_DURATION = 7000; // in ms
+var LOGO_DURATION = 3000; // in ms
 
 var CONTRAST = 254; // range 1-254
 var extn_exit_sleep_mode = false;
@@ -508,35 +508,35 @@ ap_oled.prototype.playback_mode = function(){
 							  this.playerData.duration === 0
 							){ // si c'est une radio
 							    // effacer les precedentes valeurs
-							    this.driver.setCursor(195, 57);
+							    this.driver.setCursor(200, 57);
 							    this.driver.writeString(fonts.monospace, 1, "          ", 6);
 							    // afficher mode radio
-							    this.driver.setCursor(195, 57);
+							    this.driver.setCursor(200, 57);
 							    this.driver.writeString(fonts.monospace, 1, "Radio", 6);
 							} else { // sinon si ce n'est pas une radio alors afficher mode playlist normale 
 							    let track_nb = Number(this.data.playlist_cur_index) + 1;
 						            let playlist_nb = Number(this.playerData.playlist_tracks);
 								if (playlist_nb > 999){ // si le nb de chansons de la playlist est supérieur à un total de 999
 							            // effacer les precedentes valeurs
-								    this.driver.setCursor(195, 57);
+								    this.driver.setCursor(200, 57);
 								    this.driver.writeString(fonts.monospace, 1, "      ", 6);
 							            if (track_nb < 9999999 ){ //n'afficher les valeurs que de la chanson en cours dans la playlist jusqu'à 9999999
-									    this.driver.setCursor(195, 57);
+									    this.driver.setCursor(200, 57);
 									    this.driver.writeString(fonts.monospace, 1, track_nb.toString(), 6);
 									    this.driver.writeString(fonts.monospace, 1, "/", 6);
 									    this.driver.writeString(fonts.monospace, 1, this.playerData.playlist_tracks.toString(), 6);
 								    }
 									else { // Sinon ne rien afficher (on dépasse 9999999)
-										this.driver.setCursor(195, 57);
+										this.driver.setCursor(200, 57);
 								    		this.driver.writeString(fonts.monospace, 1, "      ", 6);
 									}
 								}
 								else{ // si le nb de chansons de la playlist est inférieur à un total de 999
 							            // effacer les precedentes valeurs
-								    this.driver.setCursor(195, 57);
+								    this.driver.setCursor(200, 57);
 								    this.driver.writeString(fonts.monospace, 1, "      ", 6);
 								    // afficher les valeurs de la piste en cours et le total general
-							            this.driver.setCursor(195, 57);
+							            this.driver.setCursor(200, 57);
 								    this.driver.writeString(fonts.monospace, 1, track_nb.toString(), 6);
 								    this.driver.writeString(fonts.monospace, 1, "/", 6);
 								    this.driver.writeString(fonts.monospace, 1, this.playerData.playlist_tracks.toString(), 6);
