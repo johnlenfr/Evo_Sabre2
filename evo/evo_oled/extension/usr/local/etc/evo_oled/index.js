@@ -224,6 +224,7 @@ ap_oled.prototype.listen_to = async function(api,frequency){
       });
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
        streamer.on("songIdChange",      d=> this.data.playlist_cur_index = d    );
+       streamer.on("songIdChange",      d=>  this.playerData.playlist_tracks = d    );
 		
       
       
@@ -496,9 +497,9 @@ ap_oled.prototype.playback_mode = function(){
 						//	let indexStr = this.data.playlist_cur_index + 1 ;
 						   // indexStr =  indexStr.toString() ;
 					            this.driver.setCursor(160, 57);
-						    this.driver.writeString(fonts.monospace, 1, this.data.playlist_cur_index, 6);
+						    this.driver.writeString(fonts.monospace, 1, this.data.playlist_cur_index.toString(), 6);
 						    this.driver.setCursor(200, 57);
-						    this.driver.writeString(fonts.monospace, 1, this.playerData.playlist_tracks, 6);
+						    this.driver.writeString(fonts.monospace, 1, this.playerData.playlist_tracks.toString(), 6);
 						}
 						 
 			      }
