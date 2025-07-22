@@ -389,7 +389,7 @@ ap_oled.prototype.playback_mode = function(){
 	
  	this.scroller_x = 0;
 	this.page = "playback";
-  this.text_to_display = this.text_to_display || "";
+  	this.text_to_display = this.text_to_display || "";
 	this.refresh_track = REFRESH_TRACK;
 	this.refresh_action =()=>{
 			      if(this.plotting){ return }; // skip plotting of this frame if the pi has not finished plotting the previous frame
