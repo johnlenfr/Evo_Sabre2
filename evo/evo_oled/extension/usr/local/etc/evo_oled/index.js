@@ -94,14 +94,16 @@ function ap_oled(opts){
 	this.width = opts.width;
 	this.page = null;
   this.data = {
-    volume : null,
-    samplerate : null,
-    bitdepth : null,
+    	volume : null,
+   	samplerate : null,
+    	bitdepth : null,
 	samplesize : null,
-    bitrate : null,
-    seek : null,
-    duration : null,
-    status : null,
+    	bitrate : null,
+    	seek : null,
+    	duration : null,
+    	status : null,
+	trackPosition : null,        // <- ajouté ici
+        _lastTrackPosition : null    // <- pour éviter logs répétitifs
   };
 	this.raw_seek_value = 0;
 	this.footertext = "";
@@ -147,7 +149,11 @@ ap_oled.prototype.listen_to = async function(api,frequency){
       
       streamer.subscribe(1);
       this.handle_sleep(true);	
-      
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+console.log("[DEBUG] Contenu détaillé de streamer :", JSON.stringify(streamer, null, 2));
+
+		
       streamer.on("connectionLost", d =>{
         clearTimeout(this.idle_timeout);
         this.idle_timeout = null;
