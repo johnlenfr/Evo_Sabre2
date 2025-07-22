@@ -144,20 +144,19 @@ ap_oled.prototype.listen_to = async function(api,frequency){
    
       const sleepMonitor = setInterval(  x=>  this.handle_sleep(false), 1000 )
       this.playback_mode();
-  
-      
-      
+
       streamer.subscribe(1);
       this.handle_sleep(true);	
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-// console.log("[DEBUG] Contenu de streamer :", streamer);
-try {
-  fs.writeFileSync("/tmp/debug_streamer.json", Object.keys(streamer));
-  console.log("[DEBUG] Fichier sauvegardé : /tmp/debug_streamer.json");
-} catch (e) {
-  console.error("Erreur lors de l'écriture du fichier streamer debug :", e);
-}
+console.log("[DEBUG] Contenu de streamer :", Object.keys(streamer));
+
+//try {
+//  fs.writeFileSync("/tmp/debug_streamer.json", Object.keys(streamer));
+//  console.log("[DEBUG] Fichier sauvegardé : /tmp/debug_streamer.json");
+//} catch (e) {
+//  console.error("Erreur lors de l'écriture du fichier streamer debug :", e);
+//}
 
       streamer.on("connectionLost", d =>{
         clearTimeout(this.idle_timeout);
@@ -168,7 +167,6 @@ try {
         this.lms_not_found_mode(x => this.listen_to(api));
         return;
       })   
-      
       
       streamer.on("trackChange", d=>{
         this.text_to_display = streamer.formattedMainString;
