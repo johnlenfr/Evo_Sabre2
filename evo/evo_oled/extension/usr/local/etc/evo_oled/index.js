@@ -149,8 +149,9 @@ ap_oled.prototype.listen_to = async function(api,frequency){
       this.handle_sleep(true);	
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-console.log("[DEBUG] Contenu de streamer :", Object.keys(streamer));
-
+//console.log("[DEBUG] Contenu de streamer :", Object.keys(streamer.playerData));
+console.log("[DEBUG] Contenu de streamer :", Object.keys(streamer.playerData));
+		
 //try {
 //  fs.writeFileSync("/tmp/debug_streamer.json", Object.keys(streamer));
 //  console.log("[DEBUG] Fichier sauvegardé : /tmp/debug_streamer.json");
