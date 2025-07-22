@@ -380,100 +380,111 @@ ap_oled.prototype.playback_mode = function(){
   this.text_to_display = this.text_to_display || "";
 	this.refresh_track = REFRESH_TRACK;
 	this.refresh_action =()=>{
-      if(this.plotting){ return }; // skip plotting of this frame if the pi has not finished plotting the previous frame
-		
-      this.plotting = true;
-      this.driver.buffer.fill(0x00);
-		
-      if(this.data){
-        // volume
-        if(this.data.volume !== null ){
-                  let volstring = this.data.volume.toString();
-                  if(this.data.mute === true || volstring === "0") volstring = "X";
-                  
-                  this.driver.setCursor(0,0);
-                  this.driver.writeString(fonts.icons , 1 , "0" ,9); 
-                  this.driver.setCursor(10,1);
-                  this.driver.writeString(fonts.monospace ,1, volstring ,9);
-              }    
-        
-        // repeat
-        if(this.data.repeatSingle){
-          this.driver.setCursor(232,0);
-          this.driver.writeString(fonts.icons , 1 , "5" ,9); 
-        } else if( this.data.repeat ){
-          this.driver.setCursor(232,0);
-                  this.driver.writeString(fonts.icons , 1 , "4" ,9); 
-              }
-        
-        // track type (flac, mp3, webradio...etc.)
-        if(this.data.trackType){
-          this.driver.setCursor(35,1);
-          this.driver.writeString(fonts.monospace , 1 , this.data.trackType ,9); 
-        }
-      
-        // string with any data we have regarding sampling rate and bitrate
-        if(this.footertext){
-          this.driver.setCursor(0,57);
-          this.driver.writeString(fonts.monospace , 1 , this.footertext ,9); 
-        }
-        
-        // play pause stop logo
-        if(this.data.status){
-          let status_symbol = "";
-          switch(this.data.status){
-            case ("play"):
-              status_symbol = "1";
-              break;
-            case ("pause"):
-              status_symbol = "2"
-              break;		
-            case ("stop"):
-              status_symbol = "3"
-              break;
-          }    
-                  this.driver.setCursor(246,0);
-                  this.driver.writeString(fonts.icons ,1, status_symbol ,9);
-        }
-
-        // track title album artists
-        if(this.text_to_display.length){ 
-          //  if the whole text is short enough to fit the whole screen
-          if( this.text_width <= this.width ){
-            this.driver.setCursor( 0, 14 );
-            this.driver.writeStringUnifont(this.text_to_display,9 );  
-          }
-          else{ // text overflows the display (very likely considering it's 256px) : make the text scroll alongside its horizontal direction
-            let text_to_display = this.text_to_display;
-            text_to_display = text_to_display + " - " + text_to_display + " - ";
-            if(this.scroller_x + (this.text_width) < 0 ){
-              this.scroller_x = 0;
-            }
-            this.driver.cursor_x = this.scroller_x;
-            this.driver.cursor_y = 14
-            this.driver.writeStringUnifont(text_to_display,9 );
-          }
-        }
-        // seek data
-        if(this.data.seek_string){
-          let border_right = this.width -5;
-          let Y_seekbar = 35;
-          let Ymax_seekbar = 38;
-          this.driver.drawLine(3, Y_seekbar, border_right , Y_seekbar, 5);
-          this.driver.drawLine(border_right, Y_seekbar,border_right , Ymax_seekbar, 5);
-          this.driver.drawLine(3, Ymax_seekbar,border_right, Ymax_seekbar, 5);
-          this.driver.drawLine(3, Ymax_seekbar, 3, Y_seekbar, 5);
-          this.driver.cursor_y = 43;
-          this.driver.cursor_x = 83;
-          this.driver.writeString(fonts.monospace , 1 , this.data.seek_string ,6); 
-          this.driver.fillRect(3, Y_seekbar, border_right * this.data.ratiobar / 100, 4, 4);
-        }
-      }
-		
-		this.driver.update();
-		this.plotting = false;
-        if(this.refresh_track) return this.refresh_track--; // ne pas updater le curseur de scroll avant d'avoir écoulé les frames statiques (juste après un changement de morceau)
-		this.scroller_x--;
+			      if(this.plotting){ return }; // skip plotting of this frame if the pi has not finished plotting the previous frame
+					
+			      this.plotting = true;
+			      this.driver.buffer.fill(0x00);
+					
+			      if(this.data){
+					        // volume
+					        if(this.data.volume !== null ){
+					                  let volstring = this.data.volume.toString();
+					                  if(this.data.mute === true || volstring === "0") volstring = "X";
+					                  
+					                  this.driver.setCursor(0,0);
+					                  this.driver.writeString(fonts.icons , 1 , "0" ,9); 
+					                  this.driver.setCursor(10,1);
+					                  this.driver.writeString(fonts.monospace ,1, volstring ,9);
+					              }    
+					        
+					        // repeat
+					        if(this.data.repeatSingle){
+					          this.driver.setCursor(232,0);
+					          this.driver.writeString(fonts.icons , 1 , "5" ,9); 
+					        } else if( this.data.repeat ){
+					          this.driver.setCursor(232,0);
+					                  this.driver.writeString(fonts.icons , 1 , "4" ,9); 
+					              }
+					        
+					        // track type (flac, mp3, webradio...etc.)
+					        if(this.data.trackType){
+					          this.driver.setCursor(35,1);
+					          this.driver.writeString(fonts.monospace , 1 , this.data.trackType ,9); 
+					        }
+					      
+					        // string with any data we have regarding sampling rate and bitrate
+					        if(this.footertext){
+					          this.driver.setCursor(0,57);
+					          this.driver.writeString(fonts.monospace , 1 , this.footertext ,9); 
+					        }
+					        
+					        // play pause stop logo
+					        if(this.data.status){
+					          let status_symbol = "";
+					          switch(this.data.status){
+					            case ("play"):
+					              status_symbol = "1";
+					              break;
+					            case ("pause"):
+					              status_symbol = "2"
+					              break;		
+					            case ("stop"):
+					              status_symbol = "3"
+					              break;
+					          }    
+					                  this.driver.setCursor(246,0);
+					                  this.driver.writeString(fonts.icons ,1, status_symbol ,9);
+					        }
+					
+					        // track title album artists
+					        if(this.text_to_display.length){ 
+					          //  if the whole text is short enough to fit the whole screen
+					          if( this.text_width <= this.width ){
+					            this.driver.setCursor( 0, 14 );
+					            this.driver.writeStringUnifont(this.text_to_display,9 );  
+					          }
+					          else{ // text overflows the display (very likely considering it's 256px) : make the text scroll alongside its horizontal direction
+					            let text_to_display = this.text_to_display;
+					            text_to_display = text_to_display + " - " + text_to_display + " - ";
+					            if(this.scroller_x + (this.text_width) < 0 ){
+					              this.scroller_x = 0;
+					            }
+					            this.driver.cursor_x = this.scroller_x;
+					            this.driver.cursor_y = 14
+					            this.driver.writeStringUnifont(text_to_display,9 );
+					          }
+					        }
+					        // seek data
+					        if(this.data.seek_string){
+					          let border_right = this.width -5;
+					          let Y_seekbar = 35;
+					          let Ymax_seekbar = 38;
+					          this.driver.drawLine(3, Y_seekbar, border_right , Y_seekbar, 5);
+					          this.driver.drawLine(border_right, Y_seekbar,border_right , Ymax_seekbar, 5);
+					          this.driver.drawLine(3, Ymax_seekbar,border_right, Ymax_seekbar, 5);
+					          this.driver.drawLine(3, Ymax_seekbar, 3, Y_seekbar, 5);
+					          this.driver.cursor_y = 43;
+					          this.driver.cursor_x = 83;
+					          this.driver.writeString(fonts.monospace , 1 , this.data.seek_string ,6); 
+					          this.driver.fillRect(3, Y_seekbar, border_right * this.data.ratiobar / 100, 4, 4);
+					        }
+					
+						      // Position dans la playlist
+						    if (typeof streamer !== 'undefined' && streamer.playerData) {
+							      const songIndex = parseInt(streamer.playerData.song) + 1;
+							      const playlistLength = parseInt(streamer.playerData.playlist_tracks);
+							      if (!isNaN(songIndex) && !isNaN(playlistLength)) {
+								        const posText = `${songIndex}/${playlistLength}`;
+								        this.driver.setCursor(200, 57); // change la position si besoin
+								        this.driver.writeString(fonts.monospace, 1, posText, 9);
+							      }
+						      } 
+			      }
+					
+					this.driver.update();
+					this.plotting = false;
+			        if(this.refresh_track) return this.refresh_track--; // ne pas updater le curseur de scroll avant d'avoir écoulé les frames statiques (juste après un changement de morceau)
+					this.scroller_x--;
 	}
 
 	this.update_interval = setInterval( ()=>{ this.refresh_action() },opts.main_rate);
