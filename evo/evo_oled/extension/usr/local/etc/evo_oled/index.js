@@ -212,7 +212,7 @@ ap_oled.prototype.listen_to = async function(api,frequency){
 
       streamer.on("bitRateChange",    ()=>foot()  );
       streamer.on("sampleRateChange", ()=>foot()  );
-	  streamer.on("sampleSizeChange", ()=>foot()  );
+      streamer.on("sampleSizeChange", ()=>foot()  );
       streamer.on("encodingChange",   d=> this.data.trackType = d );
       streamer.on("stateChange",      d=> this.data.status = d    );
       streamer.on("repeatChange",     d=> {
@@ -221,6 +221,9 @@ ap_oled.prototype.listen_to = async function(api,frequency){
         if(d == 1 )  this.data.repeatSingle = true;
         if(d == 2 )  this.data.repeat = true;
       });
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+       streamer.on("songIdChange",      d=> this.data.playlist_cur_index = d    );
+		
       
       
 	}
