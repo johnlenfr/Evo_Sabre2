@@ -482,17 +482,16 @@ ap_oled.prototype.playback_mode = function(){
 					        }
 				      
 					        // string with any data we have regarding sampling rate and bitrate
-					        //if(this.footertext){
-					          //this.driver.setCursor(0,57);
-					          //this.driver.writeString(fonts.monospace , 1 , this.footertext ,9); 
-					        //}
+					        if(this.footertext){
+					          this.driver.setCursor(0,57);
+					          this.driver.writeString(fonts.monospace , 1 , this.footertext ,9); 
+					        }
 					         
 				                // Position dans la playlist
 				                if(this.data.playlist_cur_index){
-						    let indexStr = this.data.playlist_cur_index.toString();
-						    this.driver.setCursor(0, 57);
-						    this.driver.writeString(fonts.monospace, 1, indexStr, 9);
-					            this.driver.setCursor(80, 57);
+						    let indexStr = this.data.playlist_cur_index + 1 ;
+						    indexStr =  indexStr.toString() ;
+					            this.driver.setCursor(180, 57);
 						    this.driver.writeString(fonts.monospace, 1, this.data.playlist_cur_index, 9);
 						}
 						 
