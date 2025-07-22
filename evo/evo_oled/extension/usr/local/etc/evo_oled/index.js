@@ -474,7 +474,8 @@ ap_oled.prototype.playback_mode = function(){
 							      const songIndex = parseInt(streamer.playerData.song) + 1;
 							      const playlistLength = parseInt(streamer.playerData.playlist_tracks);
 							      if (!isNaN(songIndex) && !isNaN(playlistLength)) {
-								        const posText = `${songIndex}/${playlistLength}`;
+							             const posText = `${songIndex}/${playlistLength}`;
+								     console.log(`[EVO DISPLAY#2] Piste actuelle : ${posText}`);
 								        this.driver.setCursor(200, 57); // change la position si besoin
 								        this.driver.writeString(fonts.monospace, 1, posText, 9);
 							      }
