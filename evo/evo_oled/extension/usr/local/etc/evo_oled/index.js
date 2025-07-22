@@ -409,7 +409,15 @@ ap_oled.prototype.playback_mode = function(){
 					                  this.driver.writeString(fonts.monospace ,1, volstring ,9);
 					              }    
 					        
-					        // repeat
+					       
+					        // track type (flac, mp3, ogg, webradio...etc.)
+					        if(this.data.trackType){
+					          this.driver.setCursor(35,1);
+					          this.driver.writeString(fonts.monospace , 1 , this.data.trackType ,9); 
+					        }
+					      
+					        
+					         // repeat
 					        if(this.data.repeatSingle){
 					          this.driver.setCursor(232,0);
 					          this.driver.writeString(fonts.icons , 1 , "5" ,9); 
@@ -417,18 +425,6 @@ ap_oled.prototype.playback_mode = function(){
 					          this.driver.setCursor(232,0);
 					                  this.driver.writeString(fonts.icons , 1 , "4" ,9); 
 					              }
-					        
-					        // track type (flac, mp3, webradio...etc.)
-					        if(this.data.trackType){
-					          this.driver.setCursor(35,1);
-					          this.driver.writeString(fonts.monospace , 1 , this.data.trackType ,9); 
-					        }
-					      
-					        // string with any data we have regarding sampling rate and bitrate
-					        if(this.footertext){
-					          this.driver.setCursor(0,57);
-					          this.driver.writeString(fonts.monospace , 1 , this.footertext ,9); 
-					        }
 					        
 					        // play pause stop logo
 					        if(this.data.status){
@@ -480,12 +476,19 @@ ap_oled.prototype.playback_mode = function(){
 					          this.driver.writeString(fonts.monospace , 1 , this.data.seek_string ,6); 
 					          this.driver.fillRect(3, Y_seekbar, border_right * this.data.ratiobar / 100, 4, 4);
 					        }
-					
+				      
+					        // string with any data we have regarding sampling rate and bitrate
+					        if(this.footertext){
+					          this.driver.setCursor(0,57);
+					          this.driver.writeString(fonts.monospace , 1 , this.footertext ,9); 
+					        }
 						      // Position dans la playlist
-				                 if(this.data.playlist_cur_index !== null && this.data.playlist_cur_index !== undefined){
+				                 if(this.data.playlist_cur_index){
 						    let indexStr = this.data.playlist_cur_index.toString();
-						    this.driver.setCursor(200, 57);
+						    this.driver.setCursor(0, 57);
 						    this.driver.writeString(fonts.monospace, 1, indexStr, 9);
+					            this.driver.setCursor(80, 57);
+						    this.driver.writeString(fonts.monospace, 1, this.data.playlist_cur_index, 9);
 						}
 						 
 			      }
