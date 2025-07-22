@@ -6,6 +6,7 @@ const date = require('date-and-time');
 const oled = require('./oled.js');
 const fonts = require('./fonts.js');
 const fs = require("fs");
+const util = require("util");
 const http = require("http");
 
 var DRIVER;
