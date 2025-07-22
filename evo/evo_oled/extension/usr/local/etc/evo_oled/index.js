@@ -104,6 +104,7 @@ function ap_oled(opts){
     	duration : null,
     	status : null,
 	playlist_cur_index : null,
+	playlist_tracks : null,
   };
 	
 	this.raw_seek_value = 0;
@@ -489,10 +490,15 @@ ap_oled.prototype.playback_mode = function(){
 					         
 				                // Position dans la playlist
 				                if(this.data.playlist_cur_index){
-						    let indexStr = this.data.playlist_cur_index + 1 ;
-						    indexStr =  indexStr.toString() ;
-					            this.driver.setCursor(180, 57);
-						    this.driver.writeString(fonts.monospace, 1, this.data.playlist_cur_index, 9);
+						   // let track_id = this.data.playlist_cur_index + 1 ;
+						   // track_id =  track_id.toString() ;
+
+						//	let indexStr = this.data.playlist_cur_index + 1 ;
+						   // indexStr =  indexStr.toString() ;
+					            this.driver.setCursor(160, 57);
+						    this.driver.writeString(fonts.monospace, 1, this.data.playlist_cur_index, 6);
+						    this.driver.setCursor(200, 57);
+						    this.driver.writeString(fonts.monospace, 1, this.playerData.playlist_tracks, 6);
 						}
 						 
 			      }
