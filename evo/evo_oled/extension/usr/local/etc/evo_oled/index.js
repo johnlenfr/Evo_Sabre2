@@ -103,8 +103,9 @@ function ap_oled(opts){
     	seek : null,
     	duration : null,
     	status : null,
-	playlist_cur_index : null,       
+	playlist_cur_index : null,
   };
+	
 	this.raw_seek_value = 0;
 	this.footertext = "";
 	this.update_interval = null;
@@ -478,12 +479,13 @@ ap_oled.prototype.playback_mode = function(){
 					        }
 				      
 					        // string with any data we have regarding sampling rate and bitrate
-					        if(this.footertext){
-					          this.driver.setCursor(0,57);
-					          this.driver.writeString(fonts.monospace , 1 , this.footertext ,9); 
-					        }
-						      // Position dans la playlist
-				                 if(this.data.playlist_cur_index){
+					        //if(this.footertext){
+					          //this.driver.setCursor(0,57);
+					          //this.driver.writeString(fonts.monospace , 1 , this.footertext ,9); 
+					        //}
+					         
+				                // Position dans la playlist
+				                if(this.data.playlist_cur_index){
 						    let indexStr = this.data.playlist_cur_index.toString();
 						    this.driver.setCursor(0, 57);
 						    this.driver.writeString(fonts.monospace, 1, indexStr, 9);
