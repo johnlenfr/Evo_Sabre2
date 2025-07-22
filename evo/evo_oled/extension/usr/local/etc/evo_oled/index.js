@@ -406,7 +406,11 @@ ap_oled.prototype.playback_mode = function(){
 	this.refresh_track = REFRESH_TRACK;
 	this.refresh_action =()=>{
 			      if(this.plotting){ return }; // skip plotting of this frame if the pi has not finished plotting the previous frame
-					
+				// Met à jour les infos playlist depuis le streamer (à chaque frame)
+					if (typeof streamer !== 'undefined' && streamer.playerData) {
+					    this.playerData = streamer.playerData;
+					    this.data.playlist_cur_index = streamer.playerData.playlist_cur_index;
+					}	
 			      this.plotting = true;
 			      this.driver.buffer.fill(0x00);
 					
