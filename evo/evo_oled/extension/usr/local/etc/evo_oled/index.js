@@ -223,8 +223,10 @@ ap_oled.prototype.listen_to = async function(api,frequency){
         if(d == 2 )  this.data.repeat = true;
       });
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-       streamer.on("songIdChange",      d=> this.data.playlist_cur_index = d    );
-       streamer.on("songIdChange",      d=>  this.playerData.playlist_tracks = d    );
+      streamer.on("songIdChange", d => {
+	    this.data.playlist_cur_index = d;
+	    this.playerData = streamer.playerData;
+	});
 		
       
       
