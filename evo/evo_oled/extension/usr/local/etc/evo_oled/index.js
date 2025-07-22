@@ -103,8 +103,7 @@ function ap_oled(opts){
     	seek : null,
     	duration : null,
     	status : null,
-	trackPosition : null,        // <- ajouté ici
-        _lastTrackPosition : null    // <- pour éviter logs répétitifs
+	playlist_cur_index : null,       
   };
 	this.raw_seek_value = 0;
 	this.footertext = "";
@@ -151,15 +150,15 @@ ap_oled.prototype.listen_to = async function(api,frequency){
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 //console.log("[DEBUG] Contenu de streamer :", Object.keys(streamer.playerData));
-console.log("[DEBUG] Contenu de streamer :", streamer);
+//console.log("[DEBUG] Contenu de streamer :", streamer);
 
-try {
-  const safeJson = util.inspect(streamer, { depth: null, colors: false });
-  fs.writeFileSync("/tmp/debug_streamer.txt", safeJson);
-  console.log("[DEBUG] Fichier texte sauvegardé : /tmp/debug_streamer.txt");
-} catch (e) {
-  console.error("Erreur lors de l'écriture :", e);
-}
+//try {
+//  const safeJson = util.inspect(streamer, { depth: null, colors: false });
+//  fs.writeFileSync("/tmp/debug_streamer.txt", safeJson);
+//  console.log("[DEBUG] Fichier texte sauvegardé : /tmp/debug_streamer.txt");
+//} catch (e) {
+//  console.error("Erreur lors de l'écriture :", e);
+//}
 
       streamer.on("connectionLost", d =>{
         clearTimeout(this.idle_timeout);
@@ -172,6 +171,7 @@ try {
       })   
       
       streamer.on("trackChange", d=>{
+	      
         this.text_to_display = streamer.formattedMainString;
         this.driver.CacheGlyphsData( this.text_to_display);
 				this.text_width = this.driver.getStringWidthUnifont(this.text_to_display + " - ");
@@ -482,16 +482,12 @@ ap_oled.prototype.playback_mode = function(){
 					        }
 					
 						      // Position dans la playlist
-						    if (typeof streamer !== 'undefined' && streamer.playerData) {
-							      const songIndex = parseInt(streamer.playerData.song) + 1;
-							      const playlistLength = parseInt(streamer.playerData.playlist_tracks);
-							      if (!isNaN(songIndex) && !isNaN(playlistLength)) {
-							             const posText = `${songIndex}/${playlistLength}`;
-								     console.log(`[EVO DISPLAY#2] Piste actuelle : ${posText}`);
-								        this.driver.setCursor(200, 57); // change la position si besoin
-								        this.driver.writeString(fonts.monospace, 1, posText, 9);
-							      }
-						      } 
+				                 if(this.data.playlist_cur_index !== null && this.data.playlist_cur_index !== undefined){
+						    let indexStr = this.data.playlist_cur_index.toString();
+						    this.driver.setCursor(200, 57);
+						    this.driver.writeString(fonts.monospace, 1, indexStr, 9);
+						}
+						 
 			      }
 					
 					this.driver.update();
