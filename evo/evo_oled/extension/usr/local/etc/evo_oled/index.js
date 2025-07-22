@@ -493,15 +493,27 @@ ap_oled.prototype.playback_mode = function(){
 					         
 				                // Position dans la playlist
 				                if(this.data.playlist_cur_index){
-						    let track_nb = Number(this.data.playlist_cur_index) + 1;
-					            // effacer la precedente valeur
-						    this.driver.setCursor(160, 57);
-						    this.driver.writeString(fonts.monospace, 1, "          ", 6);
-						    // afficher les valeurs
-					            this.driver.setCursor(160, 57);
-						    this.driver.writeString(fonts.monospace, 1, track_nb.toString(), 6);
-						    this.driver.writeString(fonts.monospace, 1, "/", 6);
-						    this.driver.writeString(fonts.monospace, 1, this.playerData.playlist_tracks.toString(), 6);
+							if (this.playerData.playlist_tracks === 1 &&
+							  this.data.playlist_cur_index === 0 &&
+							  this.playerData.duration === 0
+							){
+							    // effacer les precedentes valeurs
+							    this.driver.setCursor(190, 57);
+							    this.driver.writeString(fonts.monospace, 1, "          ", 6);
+							    // afficher mode radio
+							    this.driver.setCursor(190, 57);
+							    this.driver.writeString(fonts.monospace, 1, "Radio", 6);
+							} else {
+							    let track_nb = Number(this.data.playlist_cur_index) + 1;
+						            // effacer les precedentes valeurs
+							    this.driver.setCursor(190, 57);
+							    this.driver.writeString(fonts.monospace, 1, "          ", 6);
+							    // afficher les valeurs
+						            this.driver.setCursor(190, 57);
+							    this.driver.writeString(fonts.monospace, 1, track_nb.toString(), 6);
+							    this.driver.writeString(fonts.monospace, 1, "/", 6);
+							    this.driver.writeString(fonts.monospace, 1, this.playerData.playlist_tracks.toString(), 6);
+							}
 						}
 						 
 			      }
