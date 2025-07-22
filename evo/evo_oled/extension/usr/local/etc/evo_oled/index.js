@@ -214,8 +214,13 @@ ap_oled.prototype.listen_to = async function(api,frequency){
       streamer.on("bitRateChange",    ()=>foot()  );
       streamer.on("sampleRateChange", ()=>foot()  );
       streamer.on("sampleSizeChange", ()=>foot()  );
-      streamer.on("encodingChange",   d=> this.data.trackType = d );
+      streamer.on("encodingChange",   d => {
+		    this.data.status = d;
+		    // Forcer mise à jour de la playlist également
+		    this.playerData = streamer.playerData;} );
+		
       streamer.on("stateChange",      d=> this.data.status = d    );
+		
       streamer.on("repeatChange",     d=> {
         this.data.repeatSingle = null;
         this.data.repeat = null;
@@ -504,7 +509,7 @@ ap_oled.prototype.playback_mode = function(){
 							    this.driver.setCursor(190, 57);
 							    this.driver.writeString(fonts.monospace, 1, "Radio", 6);
 							} else {
-							    let track_nb = Number(this.data.playlist_cur_index) + 1;
+							    let track_nb = Number(this.d;ata.playlist_cur_index) + 1;
 						            // effacer les precedentes valeurs
 							    this.driver.setCursor(190, 57);
 							    this.driver.writeString(fonts.monospace, 1, "          ", 6);
