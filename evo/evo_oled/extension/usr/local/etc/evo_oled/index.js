@@ -158,7 +158,7 @@ try {
 } catch (e) {
   console.error("Erreur lors de l'écriture du fichier streamer debug :", e);
 }
-		
+
       streamer.on("connectionLost", d =>{
         clearTimeout(this.idle_timeout);
         this.idle_timeout = null;
