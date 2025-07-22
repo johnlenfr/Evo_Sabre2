@@ -153,10 +153,11 @@ ap_oled.prototype.listen_to = async function(api,frequency){
 console.log("[DEBUG] Contenu de streamer :", streamer);
 
 try {
-	  fs.writeFileSync("/tmp/debug_streamer.json", streamer);
-	  console.log("[DEBUG] Fichier sauvegardé : /tmp/debug_streamer.json");
-		} catch (e) {
-	  console.error("Erreur lors de l'écriture du fichier streamer debug :", e);
+  const safeJson = util.inspect(streamer, { depth: null, colors: false });
+  fs.writeFileSync("/tmp/debug_streamer.txt", safeJson);
+  console.log("[DEBUG] Fichier texte sauvegardé : /tmp/debug_streamer.txt");
+} catch (e) {
+  console.error("Erreur lors de l'écriture :", e);
 }
 
       streamer.on("connectionLost", d =>{
